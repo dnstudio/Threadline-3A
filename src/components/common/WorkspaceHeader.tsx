@@ -23,7 +23,7 @@ export function WorkspaceHeader({
 }: WorkspaceHeaderProps) {
   return (
     <div style={{ 
-      padding: "32px 60px 24px 60px", 
+      padding: "60px 60px 24px 60px", 
       borderBottom: `1px solid ${DIVIDER}`, 
       background: "white",
       display: "flex",
