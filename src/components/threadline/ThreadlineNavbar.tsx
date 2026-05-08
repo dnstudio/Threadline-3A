@@ -6,6 +6,7 @@ interface ThreadlineNavbarProps {
   onClientsClick?: () => void;
   onPatientsClick?: () => void;
   onSessionsClick?: () => void;
+  onDocumentsClick?: () => void;
   onConditionsClick?: () => void;
 }
 
@@ -13,6 +14,7 @@ export const ThreadlineNavbar: React.FC<ThreadlineNavbarProps> = ({
   onClientsClick, 
   onPatientsClick, 
   onSessionsClick, 
+  onDocumentsClick,
   onConditionsClick 
 }) => {
   return (
@@ -27,13 +29,14 @@ export const ThreadlineNavbar: React.FC<ThreadlineNavbarProps> = ({
       </div>
       
       <div className="flex gap-1.5 items-center">
-        {["Users", "Clients", "Resources", "Patients", "Sessions", "Conditions"].map(item => (
+        {["Users", "Clients", "Resources", "Patients", "Sessions", "Assessments", "Documents", "Conditions"].map(item => (
           <button 
             key={item} 
             onClick={() => {
               if (item === "Clients" && onClientsClick) onClientsClick();
               if (item === "Patients" && onPatientsClick) onPatientsClick();
               if (item === "Sessions" && onSessionsClick) onSessionsClick();
+              if (item === "Documents" && onDocumentsClick) onDocumentsClick();
               if (item === "Conditions" && onConditionsClick) onConditionsClick();
             }}
             className={`px-2.5 py-1.5 text-[13px] font-medium rounded-md transition-colors duration-200 ${item === "Sessions" ? "text-[#06302c] font-semibold" : "text-slate-600 hover:bg-slate-50"}`}

@@ -13,6 +13,7 @@ import { StyleGuide } from "./components/playground/StyleGuide";
 import { ThreadlineModule } from "./components/threadline/ThreadlineModule";
 import { MainSessionListWorkspace } from "./components/threadline/MainSessionListWorkspace";
 import { MainAssessmentListWorkspace } from "./components/threadline/MainAssessmentListWorkspace";
+import { MainDocumentListWorkspace } from "./components/threadline/MainDocumentListWorkspace";
 import { GlobalModals } from "./components/threadline/Modals";
 import { FeatureToggleModal } from "./components/modals/FeatureToggleModal";
 import { FeatureToggleProvider, useFeatureFlags } from "./contexts/FeatureToggleContext";
@@ -63,6 +64,7 @@ function AppContent() {
     if (path.startsWith('/patients')) return 'Patients';
     if (path.startsWith('/sessions')) return 'Sessions';
     if (path.startsWith('/assessments')) return 'Assessments';
+    if (path.startsWith('/documents')) return 'Documents';
     if (path.startsWith('/resources')) return 'Resources';
     if (path.startsWith('/users')) return 'Users';
     return 'Clients';
@@ -106,6 +108,7 @@ function AppContent() {
           onPatientsClick={() => navigate('/patients')}
           onSessionsClick={() => navigate('/sessions')}
           onAssessmentsClick={() => navigate('/assessments')}
+          onDocumentsClick={() => navigate('/documents')}
           onResourcesClick={() => navigate('/resources')}
           onUsersClick={() => navigate('/users')}
           onConditionsClick={() => navigate('/conditions')}
@@ -139,6 +142,7 @@ function AppContent() {
               <Route path="/patients/*" element={<ThreadlineModule initialView="patients" onGuidelinesClick={() => navigate('/conditions')} />} />
               <Route path="/sessions" element={<MainSessionListWorkspace />} />
               <Route path="/assessments" element={<MainAssessmentListWorkspace />} />
+              <Route path="/documents" element={<MainDocumentListWorkspace />} />
               <Route path="/resources/*" element={<ThreadlineModule initialView="resources" onGuidelinesClick={() => navigate('/conditions')} />} />
               <Route path="/users/*" element={<ThreadlineModule initialView="users" onGuidelinesClick={() => navigate('/conditions')} />} />
             </Routes>

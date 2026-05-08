@@ -1,7 +1,8 @@
 import React from "react";
-import { ChevronLeft, Share2, MoreVertical } from "lucide-react";
-import { TEXT_PRIMARY, TEXT_SECONDARY, DIVIDER, outlineBtn, h1Style, subStyle } from "../threadline/constants";
-import { StatusBadge, StatusType } from "./StatusBadge";
+import { ChevronLeft } from "lucide-react";
+import { TEXT_PRIMARY, TEXT_SECONDARY, DIVIDER, h1Style, subStyle, TYPE_SCALE } from "../threadline/constants";
+import { Badge } from "../threadline/ui/Badge";
+import { StatusType } from "./StatusBadge";
 
 interface WorkspaceHeaderProps {
   title: string;
@@ -46,12 +47,15 @@ export function WorkspaceHeader({
           </button>
         )}
         <div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 8 }}>
             <h1 style={{ ...h1Style, margin: 0 }}>{title}</h1>
-            <StatusBadge status={status} />
+            <div style={{ ...TYPE_SCALE.IdLabel, marginTop: 4 }}>{subtitle}</div>
+          </div>
+          
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <Badge status={status} />
             {alerts}
           </div>
-          <div style={{ ...subStyle, margin: 0 }}>{subtitle}</div>
         </div>
       </div>
 

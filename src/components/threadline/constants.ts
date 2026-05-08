@@ -124,8 +124,8 @@ export const STATUS_CONFIG = {
   'ready': { label: 'Ready', bg: '#f0fdf4', text: '#15803d', border: '#bbf7d0' },
   
   // Attention / Alerts
-  'conflicts-unresolved': { label: 'Conflicts', bg: '#fef3c7', text: '#b45309', border: '#fde68a' },
-  'missing-documents': { label: 'Missing Docs', bg: '#fef2f2', text: '#b91c1c', border: '#fecaca' },
+  'conflicts-unresolved': { label: 'Conflicts', bg: '#fef2f2', text: '#b91c1c', border: '#fecaca' },
+  'missing-documents': { label: 'Missing Docs', bg: '#eff6ff', text: '#1d4ed8', border: '#bfdbfe' },
   
   // Meta / Helper
   'new': { label: 'New', bg: '#f1f5f9', text: '#64748b', border: '#e2e8f0' },

@@ -20,6 +20,7 @@ import { StatusBadge } from "../common/StatusBadge";
 import { EmptyState } from "../common/EmptyState";
 import { useFeatureFlags } from "../../contexts/FeatureToggleContext";
 import { WorkspaceAlertsProvider, useWorkspaceAlerts } from "../../contexts/WorkspaceAlertsContext";
+import { Badge } from "./ui";
 
 function ConflictResolutionModal({ isOpen, conflicts, onResolve, onSkip }: { isOpen: boolean, conflicts: any[], onResolve: () => void, onSkip: () => void }) {
   if (!isOpen) return null;
@@ -208,32 +209,17 @@ function AssessmentListScreenContent({ clientId, onBack }: { clientId: string, o
   const alerts = flags.FEATURE_COMPACT_HUD && alertStrings.length > 0 && (
     <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
       {alertStrings.map((item) => (
-        <button 
+        <Badge 
           key={item.type}
+          status={item.type === 'conflict' ? 'conflicts-unresolved' : item.type === 'document' ? 'missing-documents' : 'in-progress'}
+          label={item.text}
+          variant="outline"
           onClick={() => {
             if (item.type === 'conflict' || item.type === 'mapping') handleTabSelect('Evidence');
             if (item.type === 'document') handleTabSelect('Documents');
           }}
-          style={{ 
-            background: "white", 
-            border: `1px solid ${item.type === 'conflict' ? '#fecaca' : item.type === 'document' ? '#e9eff6' : '#fef3c7'}`, 
-            borderRadius: 20, 
-            padding: "4px 12px", 
-            fontSize: 11, 
-            fontWeight: 600, 
-            color: item.type === 'conflict' ? '#dc2626' : item.type === 'document' ? '#2563eb' : '#d97706',
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-            boxShadow: "0 1px 2px rgba(0,0,0,0.05)"
-          }}
-        >
-          {item.type === 'conflict' && <AlertTriangle size={12} />}
-          {item.type === 'document' && <Info size={12} />}
-          {item.type === 'mapping' && <ChevronRight size={12} />}
-          {item.text}
-        </button>
+          style={{ cursor: 'pointer', boxShadow: "0 1px 2px rgba(0,0,0,0.05)" }}
+        />
       ))}
     </div>
   );

@@ -12,6 +12,7 @@ interface NavbarProps {
   onPatientsClick?: () => void;
   onSessionsClick?: () => void;
   onAssessmentsClick?: () => void;
+  onDocumentsClick?: () => void;
   onResourcesClick?: () => void;
   onUsersClick?: () => void;
   onConditionsClick?: () => void;
@@ -25,6 +26,7 @@ export function Navbar({
   onPatientsClick, 
   onSessionsClick, 
   onAssessmentsClick,
+  onDocumentsClick,
   onResourcesClick, 
   onUsersClick, 
   onConditionsClick, 
@@ -32,7 +34,7 @@ export function Navbar({
   activeItem = "Conditions", 
   isAdminView = false 
 }: NavbarProps) {
-  const navItems = ["Sessions", "Assessments"];
+  const navItems = ["Sessions", "Assessments", "Documents"];
   if (isAdminView) {
     navItems.push("Conditions", "Users");
   }
@@ -113,6 +115,7 @@ export function Navbar({
                 if (item === "Patients" && onPatientsClick) onPatientsClick();
                 if (item === "Sessions" && onSessionsClick) onSessionsClick();
                 if (item === "Assessments" && onAssessmentsClick) onAssessmentsClick();
+                if (item === "Documents" && onDocumentsClick) onDocumentsClick();
                 if (item === "Resources" && onResourcesClick) onResourcesClick();
                 if (item === "Users" && onUsersClick) onUsersClick();
                 if (item === "Conditions" && onConditionsClick) onConditionsClick();
